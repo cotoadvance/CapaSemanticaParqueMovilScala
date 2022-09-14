@@ -62,6 +62,7 @@ object ProcesoDiario {
         trim($"PAYMENT_CATEGORY_DESC").isin("Postpaid Payment", "Hybrid Payment")
         and $"CUSTOMER_SUB_TYPE_DESC".isin("Mediana Empresa", "Micro", "Pequeña Empresa", "Corporaciones", "Gran Empresa")
         and $"VALID_IND" === 1
+        and date_format($"CLOSE_DATE", "yyyy") >= 2021
       ).
       groupBy("CLOSE_DATE", "SEGMENTO").
       agg(countDistinct("PRIMARY_RESOURCE_VALUE").as("CANT_LINEAS"), countDistinct("RUT_ID").as("CANT_RUT")).
