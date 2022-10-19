@@ -66,7 +66,7 @@ object ProcesoDiario {
       ).
       groupBy("CLOSE_DATE", "SEGMENTO").
       agg(countDistinct("PRIMARY_RESOURCE_VALUE").as("CANT_LINEAS"), countDistinct("RUT_ID").as("CANT_RUT")).
-      withColumn("AGNO", date_format(to_date($"CLOSE_DATE"), "Y")).
+      withColumn("AGNO", date_format(to_date($"CLOSE_DATE"), "yyyy")).
       withColumn("MES_", date_format(to_date($"CLOSE_DATE"), "MMM")).
       withColumn(
         "MES",
@@ -76,7 +76,7 @@ object ProcesoDiario {
           when($"MES_" === "Apr", "Abril").
           when($"MES_" === "May", "Mayo").
           when($"MES_" === "Jun", "Junio").
-          when($"MES_" === "Jul", "Junio").
+          when($"MES_" === "Jul", "Julio").
           when($"MES_" === "Aug", "Agosto").
           when($"MES_" === "Sep", "Septiembre").
           when($"MES_" === "Oct", "Octubre").
