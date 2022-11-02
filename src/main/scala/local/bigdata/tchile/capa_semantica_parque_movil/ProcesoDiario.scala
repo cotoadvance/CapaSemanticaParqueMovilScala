@@ -122,7 +122,7 @@ object ProcesoDiario {
          |SEGMENTO string,
          |CANT_LINEAS long,
          |CANT_RUT long,
-         |FECHA_CARGA date
+         |FECHA_CARGA date,
          |TIPO_CONTRATO string)
          |PARTITIONED BY
          |(year string, month string, day string)
