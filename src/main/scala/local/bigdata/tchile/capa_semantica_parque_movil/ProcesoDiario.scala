@@ -84,13 +84,15 @@ object ProcesoDiario {
           when($"MES_" === "Dec", "Diciembre")
       ).
       withColumn("FECHA_CARGA", current_date()).
+      withColumn("TIPO_CONTRATO", lit("MOVIL")).
       select(
         "AGNO",
         "MES",
         "SEGMENTO",
         "CANT_LINEAS",
         "CANT_RUT",
-        "FECHA_CARGA"
+        "FECHA_CARGA",
+        "TIPO_CONTRATO"
       )
 
     // ---------------------------------------------------------------
@@ -121,7 +123,7 @@ object ProcesoDiario {
          |CANT_LINEAS long,
          |CANT_RUT long,
          |FECHA_CARGA date
-         |)
+         |TIPO_CONTRATO string)
          |PARTITIONED BY
          |(year string, month string, day string)
          |STORED AS PARQUET
